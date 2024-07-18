@@ -9,6 +9,7 @@ format:
     theme: [default, slides.scss]
     transition: fade
     slide-number: true
+    margin: 0.1
 execute:
   echo: true
   output: asis
@@ -101,8 +102,8 @@ t1_unlabelled |>
 ```
 :::
 
-::: {.column .fragment .small}
-<br> <br>
+::: {.column .fragment .smallish}
+<br> 
 
 ```{=html}
 <style>
@@ -113,6 +114,8 @@ td, th {
 ```
 56% of flights
 
+::: {.fragment}
+
 |           <!-- --> | <!-- -->       |
 |-------------------:|:---------------|
 | departing from JFK | departed early |
@@ -121,8 +124,9 @@ td, th {
 |    arriving at JFK | departed early |
 :::
 :::
+:::
 
-## Huh {transition="fade"}
+## 🔎 {transition="fade"}
 
 <br>
 
@@ -150,17 +154,23 @@ t1_unlabelled|>
 
 ![](images/travis_yolo.png)
 
-
-
 # Data <br> definitions & discoverability {.inverse}
+
+## nycflights13
+
+![](images/relational-nycflights.png)
+
+::: foot
+<https://r4ds.had.co.nz/relational-data.html>
+:::
+
+## Raw data context
 
 # Data <br> stewardship {.inverse}
 
-# Data <br> effiency {.inverse}
+# Data <br> efficiency {.inverse}
 
 # More {.inverse}
-
-
 
 ## data i work with
 
@@ -169,7 +179,6 @@ t1_unlabelled|>
 Between 31 - 116 columns, median 44
 
 1,384 unique column names across 93 data frames
-
 
 ## Why aren't we doing this
 
@@ -183,8 +192,8 @@ Learn from other languages (SAS, SPSS, Stata)
 
 <br>
 
-Thank you to the **many** individuals who provided feedback both the 
-abstract submission and the development of this talk. Your support was invaluable. 
+Thank you to the **many** individuals who provided feedback both the abstract submission and the development of this talk.
+Your support was invaluable.
 
 <br>
 
