@@ -2,14 +2,13 @@
 title: "Context is King"
 author: "Shannon Pileggi"
 footer:  ""
-logo: "images/gtreg-logo.png"
+logo: "images/pngtree_crown.png"
 editor: source
 format: 
   revealjs: 
-    theme: slides.scss
+    theme: [default, slides.scss]
     transition: fade
     slide-number: true
-    chalkboard: true
 execute:
   echo: true
   output: asis
@@ -53,6 +52,8 @@ Director of Flight Operations
 
 ## Success 🎉
 
+<br>
+
 ```{r}
 #| echo: false
 t1_unlabelled <- flights_delay |>
@@ -82,6 +83,8 @@ Sarah
 Director of Flight Operations
 
 ## Walk through the numbers
+
+<br>
 
 ::: columns
 ::: column
@@ -121,6 +124,8 @@ td, th {
 
 ## Huh {transition="fade"}
 
+<br>
+
 ::: columns
 ::: column
 ```{r}
@@ -143,15 +148,15 @@ t1_unlabelled|>
 
 ## 
 
-![](images/malbec.jpg)
+![](images/travis_yolo.png)
 
 
 
-# Data definitions & discoverability {.inverse}
+# Data <br> definitions & discoverability {.inverse}
 
-# Data stewardship {.inverse}
+# Data <br> stewardship {.inverse}
 
-# Data effiency {.inverse}
+# Data <br> effiency {.inverse}
 
 # More {.inverse}
 
@@ -176,7 +181,11 @@ Learn from other languages (SAS, SPSS, Stata)
 
 # Thank you {.inverse}
 
+<br>
+
 Thank you to the **many** individuals who provided feedback both the 
 abstract submission and the development of this talk. Your support was invaluable. 
+
+<br>
 
 No Travis's were harmed in the making of this presentation.
