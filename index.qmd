@@ -1,0 +1,150 @@
+---
+title: "Context is King"
+author: "Shannon Pileggi"
+footer:  ""
+logo: "images/gtreg-logo.png"
+editor: source
+format: 
+  revealjs: 
+    theme: slides.scss
+    transition: fade
+    slide-number: true
+    chalkboard: true
+execute:
+  echo: true
+  output: asis
+  freeze: auto
+---
+
+# It starts with an email
+
+```{r}
+#| echo: false
+library(gtsummary)
+library(gt)
+source("nycflights-delay-demo.R")
+```
+
+. . .
+
+<br>
+
+Hi Shannon -
+
+I see Travis is out on vacation.
+Can you re-run the flight delay report?
+Please walk us through the numbers at the next nycflights project meeting.
+
+Thanks,
+
+Sarah
+
+Director of Flight Operations
+
+# 
+
+<iframe src="https://giphy.com/embed/7NoNw4pMNTvgc" width="480" height="480" style frameBorder="0" class="giphy-embed" allowFullScreen>
+
+</iframe>
+
+<p><a href="https://giphy.com/gifs/content-7NoNw4pMNTvgc">via GIPHY</a></p>
+
+# Success 🎉
+
+```{r}
+#| echo: false
+flights_delay |>
+  select(name, delay_category) |>
+  tbl_summary(
+    by = name
+  )
+```
+
+# The email
+
+<br>
+
+Hi Shannon -
+
+I see Travis is out on vacation.
+Can you re-run the flight delay report?
+Please **walk us through the numbers** at the next nycflights project meeting.
+
+Thanks,
+
+Sarah
+
+Director of Flight Operations
+
+# Interpret the data
+
+::: columns
+::: column
+```{r}
+#| echo: false
+flights_delay |>
+  select(name, delay_category) |>
+  tbl_summary(
+    by = name
+  ) |> 
+  as_gt() |> 
+  tab_style(
+    style = list(
+      cell_fill(color = "#FFFBC8")
+      ),
+    locations = cells_body(rows = 2, columns = "stat_1")
+  )
+```
+:::
+
+
+
+::: {.column .fragment}
+
+56% of flights
+
+|  <!-- -->          |  <!-- -->      |
+|-------------------:|:---------------|
+| departing from JFK | departed early |   
+| arriving at JFK    | arrived early  |   
+| departing from JFK | arrived early  |
+| arriving at JFK    | departed early |
+
+
+
+:::
+:::
+
+# Huh {transition="fade"}
+
+::: columns
+::: column
+```{r}
+#| echo: false
+flights_delay |>
+  select(name, delay_category) |>
+  tbl_summary(
+    by = name
+  ) |> 
+  as_gt() |> 
+  tab_style(
+    style = list(
+      cell_fill(color = "#FFFBC8")
+      ),
+    locations = cells_body(rows = 1, columns = "label")
+  )
+```
+:::
+
+::: {.column .fragment}
+<img src="https://en.meming.world/images/en/1/17/Monkey_Puppet.jpg"/>
+:::
+:::
+
+# 
+
+![](images/pexels-freestockpro-319930.jpg){width="80%"}
+
+::: footer
+[Photo by Oleksandr P on Pexels](https://www.pexels.com/photo/orange-safety-ring-on-man-shoulder-near-body-of-water-319930/)
+:::

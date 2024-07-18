@@ -2,6 +2,8 @@ library(nycflights13)
 library(labelled)
 library(tidyverse)
 
+# labelled versions of all data -----
+
 airlines_labelled <- airlines |>
   set_variable_labels(
     carrier = "Airline two letter carrier abbreviation",
@@ -77,6 +79,8 @@ weather_labelled <- weather |>
   )
 
 
+# list of labelled data ----
+
 flights_database <- tibble::lst(
   airlines_labelled,
   airports_labelled,
@@ -85,75 +89,53 @@ flights_database <- tibble::lst(
   weather_labelled
 )
 
+# dictionary of labelled data ----
+
 flights_dictionary <- flights_database |>
   map(labelled::generate_dictionary) |>
   enframe() |>
   unnest(cols = value)
 
-
-words <- strsplit(flights_dictionary$label, " ") |>
-  purrr::flatten_chr() |>
-  as_tibble()
-
-words |> count(value, sort = TRUE) |> view()
-
-# year or time possible point of confusion
-
-# from r for data science
-flights2 <- flights_labelled |>
-  select(year, time_hour, origin, dest, tailnum, carrier)
-flights2
-
-flights2 |>
-  left_join(planes, join_by(tailnum))
+# labelled version of flights delay analysis data ----
 
 flights_delay_labelled <- flights_labelled |>
   select(origin, dest, arr_delay, dep_delay) |>
   left_join(airports_labelled |> select(faa, name), join_by(origin == faa)) |>
   mutate(
     delay_category = case_when(
-      dep_delay < 0 ~ "Early",
-      dep_delay == 0 ~ "On time",
-      dep_delay %in% 1:30 ~ "1-30 min late",
-      dep_delay > 30 ~ "> 30 min late"
-    ) |> fct_relevel("Early", "On time", "1-30 min late", "> 30 min late")
+      dep_delay < 0 ~ "Early (<0 min)",
+      dep_delay == 0 ~ "On time (0 min)",
+      dep_delay %in% 1:30 ~ "Late (1-30 min)",
+      dep_delay > 30 ~ "Very late (>30 min)"
+    ) |> fct_relevel("Early (<0 min)", "On time (0 min)", "Late (1-30 min)", "Very late (>30 min)")
   ) |>
   labelled::set_variable_labels(
     delay_category = "Departure delay by origin airport"
   )
 
+# unlabelled version of flights delay analysis data ----
 
-flights_delay <- flights |>
+flights_delay <- flights_labelled |>
   select(origin, dest, arr_delay, dep_delay) |>
-  left_join(airports |> select(faa, name), join_by(origin == faa)) |>
+  left_join(airports_labelled |> select(faa, name), join_by(origin == faa)) |>
   mutate(
     delay_category = case_when(
-      dep_delay < 0 ~ "Early",
-      dep_delay == 0 ~ "On time",
-      dep_delay %in% 1:30 ~ "1-30 min late",
-      dep_delay > 30 ~ "> 30 min late"
-    ) |> fct_relevel("Early", "On time", "1-30 min late", "> 30 min late")
-  )
+      dep_delay < 0 ~ "Early (<0 min)",
+      dep_delay == 0 ~ "On time (0 min)",
+      dep_delay %in% 1:30 ~ "Late (1-30 min)",
+      dep_delay > 30 ~ "Very late (>30 min)"
+    ) |> fct_relevel("Early (<0 min)", "On time (0 min)", "Late (1-30 min)", "Very late (>30 min)")
+  ) 
 
-# Hey Shannon - since Travis is on vacation, can you re-run the
-# flight delay report he created last year and walk us through
-# the numbers at the team meeting?
-
-
-flights_delay |>
-  select(name, delay_category) |>
-  gtsummary::tbl_summary(
-    by = name
-  )
 
 
 # is this delay by origin or destination airport?
 # is this delay in departure time or arrival time?
 
-1. delay in departure time by origin airport
-2. delay in departure time by destination airport
-3. delay in arrival time by origin airport
-4. delay in arrival time by destination airport
+# 1. delay in departure time by origin airport
+# 2. delay in departure time by destination airport
+# 3. delay in arrival time by origin airport
+# 4. delay in arrival time by destination airport
 
 
 # TidyTuesday 2022, Week 28
