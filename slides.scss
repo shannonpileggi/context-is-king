@@ -13,6 +13,10 @@ $custom-col: #E67E3A;
 
 /*-- scss:rules --*/
 
+.slide-background-content {
+    background-color: #f3f3f3;
+}
+
 .emphasis {
   font-weight: bold;
   color: $custom-col;
@@ -130,3 +134,17 @@ details>summary {
   align-items: center;
   height: 90%;
 }
+
+/*-- inverse from Emil H https://github.com/EmilHvitfeldt/quarto-revealjs-inverse --*/
+
+.inverse {
+  color: #f3f3f3;
+  h1, h2, h3 {
+    color: #f3f3f3;
+  }
+  
+  .slide-background-content {
+    background-color: #7090A5;
+  }
+
+}  

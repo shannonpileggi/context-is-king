@@ -103,11 +103,10 @@ flights_delay_labelled <- flights_labelled |>
   left_join(airports_labelled |> select(faa, name), join_by(origin == faa)) |>
   mutate(
     delay_category = case_when(
-      dep_delay < 0 ~ "Early (<0 min)",
-      dep_delay == 0 ~ "On time (0 min)",
-      dep_delay %in% 1:30 ~ "Late (1-30 min)",
-      dep_delay > 30 ~ "Very late (>30 min)"
-    ) |> fct_relevel("Early (<0 min)", "On time (0 min)", "Late (1-30 min)", "Very late (>30 min)")
+      dep_delay < 0 ~ "Early",
+      dep_delay == 0 ~ "On time",
+      dep_delay > 0 ~ "Late"
+    ) |> fct_relevel("Early", "On time", "Late")
   ) |>
   labelled::set_variable_labels(
     delay_category = "Departure delay by origin airport"
@@ -120,11 +119,10 @@ flights_delay <- flights_labelled |>
   left_join(airports_labelled |> select(faa, name), join_by(origin == faa)) |>
   mutate(
     delay_category = case_when(
-      dep_delay < 0 ~ "Early (<0 min)",
-      dep_delay == 0 ~ "On time (0 min)",
-      dep_delay %in% 1:30 ~ "Late (1-30 min)",
-      dep_delay > 30 ~ "Very late (>30 min)"
-    ) |> fct_relevel("Early (<0 min)", "On time (0 min)", "Late (1-30 min)", "Very late (>30 min)")
+      dep_delay < 0 ~ "Early",
+      dep_delay == 0 ~ "On time",
+      dep_delay > 0 ~ "Late"
+    ) |> fct_relevel("Early", "On time", "Late")
   ) 
 
 

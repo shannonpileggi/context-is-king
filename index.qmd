@@ -16,7 +16,9 @@ execute:
   freeze: auto
 ---
 
-# It starts with an email
+# The setting {.inverse}
+
+## An email
 
 ```{r}
 #| echo: false
@@ -41,7 +43,7 @@ Sarah
 
 Director of Flight Operations
 
-# 
+## 
 
 <iframe src="https://giphy.com/embed/7NoNw4pMNTvgc" width="480" height="480" style frameBorder="0" class="giphy-embed" allowFullScreen>
 
@@ -49,18 +51,21 @@ Director of Flight Operations
 
 <p><a href="https://giphy.com/gifs/content-7NoNw4pMNTvgc">via GIPHY</a></p>
 
-# Success 🎉
+## Success 🎉
 
 ```{r}
 #| echo: false
-flights_delay |>
+t1_unlabelled <- flights_delay |>
   select(name, delay_category) |>
   tbl_summary(
     by = name
-  )
+  ) |>  
+  modify_header(all_stat_cols() ~ "**{level}**  <br>N = {style_number(n)}") 
+
+t1_unlabelled
 ```
 
-# The email
+## The email
 
 <br>
 
@@ -76,17 +81,13 @@ Sarah
 
 Director of Flight Operations
 
-# Interpret the data
+## Walk through the numbers
 
 ::: columns
 ::: column
 ```{r}
 #| echo: false
-flights_delay |>
-  select(name, delay_category) |>
-  tbl_summary(
-    by = name
-  ) |> 
+t1_unlabelled |> 
   as_gt() |> 
   tab_style(
     style = list(
@@ -97,35 +98,34 @@ flights_delay |>
 ```
 :::
 
+::: {.column .fragment .small}
+<br> <br>
 
-
-::: {.column .fragment}
-
+```{=html}
+<style>
+td, th {
+   border: none!important;
+}
+</style>
+```
 56% of flights
 
-|  <!-- -->          |  <!-- -->      |
+|           <!-- --> | <!-- -->       |
 |-------------------:|:---------------|
-| departing from JFK | departed early |   
-| arriving at JFK    | arrived early  |   
+| departing from JFK | departed early |
+|    arriving at JFK | arrived early  |
 | departing from JFK | arrived early  |
-| arriving at JFK    | departed early |
-
-
-
+|    arriving at JFK | departed early |
 :::
 :::
 
-# Huh {transition="fade"}
+## Huh {transition="fade"}
 
 ::: columns
 ::: column
 ```{r}
 #| echo: false
-flights_delay |>
-  select(name, delay_category) |>
-  tbl_summary(
-    by = name
-  ) |> 
+t1_unlabelled|> 
   as_gt() |> 
   tab_style(
     style = list(
@@ -141,10 +141,42 @@ flights_delay |>
 :::
 :::
 
-# 
+## 
 
-![](images/pexels-freestockpro-319930.jpg){width="80%"}
+![](images/malbec.jpg)
 
-::: footer
-[Photo by Oleksandr P on Pexels](https://www.pexels.com/photo/orange-safety-ring-on-man-shoulder-near-body-of-water-319930/)
-:::
+
+
+# Data definitions & discoverability {.inverse}
+
+# Data stewardship {.inverse}
+
+# Data effiency {.inverse}
+
+# More {.inverse}
+
+
+
+## data i work with
+
+93 data frames
+
+Between 31 - 116 columns, median 44
+
+1,384 unique column names across 93 data frames
+
+
+## Why aren't we doing this
+
+History of labels and R
+
+When did R/RStudio introduce this?
+
+Learn from other languages (SAS, SPSS, Stata)
+
+# Thank you {.inverse}
+
+Thank you to the **many** individuals who provided feedback both the 
+abstract submission and the development of this talk. Your support was invaluable. 
+
+No Travis's were harmed in the making of this presentation.
