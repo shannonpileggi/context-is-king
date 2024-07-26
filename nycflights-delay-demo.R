@@ -89,12 +89,15 @@ flights_database <- tibble::lst(
   weather_labelled
 )
 
+
 # dictionary of labelled data ----
 
 flights_dictionary <- flights_database |>
   map(labelled::generate_dictionary) |>
   enframe() |>
   unnest(cols = value)
+
+# write_excel_csv(flights_dictionary, "images/flights_dictionary.csv")
 
 # labelled version of flights delay analysis data ----
 
@@ -137,4 +140,5 @@ flights_delay <- flights_labelled |>
 
 
 # TidyTuesday 2022, Week 28
+
 
