@@ -103,7 +103,10 @@ flights_dictionary <- flights_database |>
 
 flights_delay_labelled <- flights_labelled |>
   select(origin, dest, arr_delay, dep_delay) |>
-  left_join(airports_labelled |> select(faa, name), join_by(origin == faa)) |>
+  left_join(
+    airports_labelled |> select(faa, name), 
+    join_by(origin == faa)
+    ) |>
   mutate(
     delay_category = case_when(
       dep_delay < 0 ~ "Early",
@@ -112,14 +115,19 @@ flights_delay_labelled <- flights_labelled |>
     ) |> fct_relevel("Early", "On time", "Late")
   ) |>
   labelled::set_variable_labels(
-    delay_category = "Departure delay by origin airport"
+    delay_category = "Departure delay by origin airport",
+    name = "Origin airport name"
   )
 
 # unlabelled version of flights delay analysis data ----
 
-flights_delay <- flights_labelled |>
+
+flights_delay <- flights |>
   select(origin, dest, arr_delay, dep_delay) |>
-  left_join(airports_labelled |> select(faa, name), join_by(origin == faa)) |>
+  left_join(
+    select(airports, faa, name),
+    join_by(origin == faa)
+    ) |>
   mutate(
     delay_category = case_when(
       dep_delay < 0 ~ "Early",
@@ -128,6 +136,23 @@ flights_delay <- flights_labelled |>
     ) |> fct_relevel("Early", "On time", "Late")
   ) 
 
+
+
+flights_delay <- flights |>
+  select(origin, dest, arr_delay, dep_delay) |>
+  left_join(
+    select(airports, faa, name),
+    join_by(origin == faa)
+  ) |>
+  mutate(
+    delay_category = fct_relevel(
+      case_when(
+        dep_delay < 0 ~ "Early",
+        dep_delay == 0 ~ "On time",
+        dep_delay > 0 ~ "Late"
+    ), 
+    c("Early", "On time", "Late"))
+  )
 
 
 # is this delay by origin or destination airport?
@@ -141,4 +166,7 @@ flights_delay <- flights_labelled |>
 
 # TidyTuesday 2022, Week 28
 
+flights_labelled2 <- flights
+attr(flights_labelled2$year, "label") <- "Flight year of departure"
+attr(flights_labelled2$month, "label") <- "Flight month of departure"
 

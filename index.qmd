@@ -43,13 +43,13 @@ Sarah
 
 Director of Flight Operations
 
-## 
+## {.center}
 
-<iframe src="https://giphy.com/embed/7NoNw4pMNTvgc" width="480" height="480" style frameBorder="0" class="giphy-embed" allowFullScreen>
+
+<iframe src="https://giphy.com/embed/7NoNw4pMNTvgc" width="550" height="550" style frameBorder="0" class="giphy-embed" allowFullScreen>
 
 </iframe>
 
-<p><a href="https://giphy.com/gifs/content-7NoNw4pMNTvgc">via GIPHY</a></p>
 
 ## Success 🎉
 
@@ -87,8 +87,9 @@ Director of Flight Operations
 
 <br>
 
-::: columns
-::: column
+:::: {.columns} 
+::: {.column}
+56% of flights...
 ```{r}
 #| echo: false
 t1_unlabelled |> 
@@ -102,44 +103,40 @@ t1_unlabelled |>
 ```
 :::
 
-::: {.column .fragment .smallish}
-<br> 
-
-```{=html}
-<style>
-td, th {
-   border: none!important;
-}
-</style>
-```
-
-56% of flights...
-
-::: {.fragment}
-&nbsp;&nbsp; departing from JFK departed early
-:::
-
-
-::: {.fragment}
-&nbsp;&nbsp; arriving at JFK  arrived early  
+::: {.column .fragment}
 
 <br>
 
+::: {.fragment}
+departing from JFK 
+
+departed early
 :::
-::: {.fragment .largest}
+
+<br>
+
+::: {.fragment}
+arriving at JFK
+
+arrived early  
+
+
+::: {.largest}
 😬😱
 :::
+:::
+
 
 
 :::
-:::
+::::
 
-## 🔎 {transition="fade"}
+## {transition="fade"}
 
 <br>
 
-::: columns
-::: column
+:::: {.columns}
+::: {.column}
 ```{r}
 #| echo: false
 t1_unlabelled|> 
@@ -156,24 +153,51 @@ t1_unlabelled|>
 ::: {.column}
 <img src="https://en.meming.world/images/en/1/17/Monkey_Puppet.jpg"/>
 :::
-:::
+::::
 
 ## 
 
 ![](images/travis_yolo.png)
 
 
-## The journey to understand {background-image="images/pexels-pixabay-39868.jpg" background-size=30% background-repeat=no-repeat background-position=right}
+## A journey to understand {background-image="images/pexels-pixabay-39868.jpg" background-size=30% background-repeat=no-repeat background-position=right}
 
 <br>
+
+:::{.larger}
 
 1. Source data.
 
 
 2. Downstream variables.
 
+:::
 
-# Data <br> discoverability {.inverse}
+# Data <br> stewardship {.inverse}
+
+## The code
+
+. . .
+
+<br>
+```{r}
+#| code-line-numbers: "1,4"
+#| eval: FALSE
+flights_delay <- flights |>
+  select(origin, dest, arr_delay, dep_delay) |>
+  left_join(
+    select(airports, faa, name),
+    join_by(origin == faa)
+    ) |>
+  mutate(
+    delay_category = case_when(
+      dep_delay < 0 ~ "Early",
+      dep_delay == 0 ~ "On time",
+      dep_delay > 0 ~ "Late"
+    ) |> fct_relevel("Early", "On time", "Late")
+  ) 
+```
+
 
 ## nycflights13
 
@@ -207,37 +231,156 @@ Between 31 - 116 columns, median 44
 
 ## Source data context
 
-::: columns
-::: column
+:::: {.columns}
+::: {.column}
 `View(flights)`
 ![](images/flights_view_unlabelled.png)
 :::
 
-::: column
+::: {.column}
 `External excel file`
 ![](images/flights_dictionary_excel.png)
 :::
-:::
+::::
 
-## Source data context can and should be embedded in your data
+## Data context <ins>can</ins> and <ins>should</ins> be embedded in your data
 
+. . .
+
+`View(flights_labelled)`
 ![](images/flights_view_labelled.png)
 
-# Data <br> stewardship {.inverse}
+## Assigning variable labels
+
+```{r}
+#| eval: FALSE
+flights_labelled <- flights |>
+  labelled::set_variable_labels(
+    year  = "Flight year of departure",
+    month = "Flight month of departure",
+    ...
+  )
+```
+
+. . .
+
+<br>
+
+```{r}
+#| eval: FALSE
+flights_labelled <- flights
+attr(flights_labelled$year,  "label") <- "Flight year of departure"
+attr(flights_labelled$month, "label") <- "Flight month of departure"
+...
+```
+
+<br>
+
+. . .
+
+:::: {.columns}
+
+::: {.column width="30%"}
+Further reading
+:::
+
+::: {.column width="70%"}
+[The case for variable labels in R](https://www.pipinghotdata.com/posts/2022-09-13-the-case-for-variable-labels-in-r/) 
+
+[Advanced R, Ch 3.3 Attributes](https://adv-r.hadley.nz/vectors-chap.html?q=attributes#attributes)
+:::
+
+::::
+
+## Viewing labelled data
+
+:::: {.columns}
+
+::: {.column width="50%"}
+`View(flights)`
+![](images/flights_view_unlabelled.png)
+:::
+
+::: {.column width="50%"}
+`View(flights_labelled)`
+![](images/flights_view_labelled_less.png)
+:::
+
+::::
+
+## History
+
+## Data dictionary
+
+## Identifying downstream context
+
+```{r}
+#| code-line-numbers: "5,9"
+#| eval: FALSE
+flights_delay <- flights |>
+  select(origin, dest, arr_delay, dep_delay) |>
+  left_join(
+    select(airports, faa, name),
+    join_by(origin == faa)
+    ) |>
+  mutate(
+    delay_category = case_when(
+      dep_delay < 0 ~ "Early",
+      dep_delay == 0 ~ "On time",
+      dep_delay > 0 ~ "Late"
+    ) |> fct_relevel("Early", "On time", "Late")
+  )  
+```
+
+. . .
+
+`delay_category` represents 
+
+_Departure delay by origin airport_
+
+## Data context <ins>can</ins> and <ins>should</ins> be embedded in your data
+
+:::: {.columns}
+
+::: {.column width="65%"}
+
+```{r}
+#| code-line-numbers: "1,4,14,15,16"
+#| eval: FALSE
+flights_delay_labelled <- flights_labelled |>
+  select(origin, dest, arr_delay, dep_delay) |>
+  left_join(
+    select(airports_labelled, faa, name),
+    join_by(origin == faa)
+    ) |>
+  mutate(
+    delay_category = case_when(
+      dep_delay < 0 ~ "Early",
+      dep_delay == 0 ~ "On time",
+      dep_delay > 0 ~ "Late"
+    ) |> fct_relevel("Early", "On time", "Late")
+  )  |>
+  labelled::set_variable_labels(
+    delay_category = "Departure delay by origin airport",
+    name = "Origin airport name"
+  )
+```
+:::
+
+::: {.column width="35%"}
+
+![](images/flights_delay_view_labelled.png){width="100%"}
+
+:::
+
+::::
+
 
 # Data <br> efficiency {.inverse}
 
-# More {.inverse}
+## Tabling
 
-
-
-## Why aren't we doing this
-
-History of labels and R
-
-When did R/RStudio introduce this?
-
-Learn from other languages (SAS, SPSS, Stata)
+## Figures
 
 # Thank you {.inverse}
 
@@ -253,6 +396,9 @@ No Travis's were harmed in the making of this presentation.
 # Photos
 
 https://unsplash.com/photos/woman-wearing-black-jacket-sitting-on-gray-rock-and-using-binoculrs-dxFi8Ea670E
+
+cat gif
+<p><a href="https://giphy.com/gifs/content-7NoNw4pMNTvgc">via GIPHY</a></p>
 
 Photo by Pixabay from Pexels: https://www.pexels.com/photo/green-vines-39868/
 https://www.pexels.com/photo/green-vines-39868/
