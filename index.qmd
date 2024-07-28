@@ -173,7 +173,7 @@ t1_unlabelled|>
 
 :::
 
-# Data <br> stewardship {.inverse}
+# Data stewardship {.inverse}
 
 ## The code
 
@@ -243,7 +243,7 @@ Between 31 - 116 columns, median 44
 :::
 ::::
 
-## Data context <ins>can</ins> and <ins>should</ins> be embedded in your data
+## Source data context <ins>can</ins> and <ins>should</ins> be embedded in your data
 
 . . .
 
@@ -308,11 +308,27 @@ Further reading
 
 ::::
 
-## History
+## 
 
-## Data dictionary
+![](images/timeline-1.svg)
+
+::: notes
+source for image in google slides at
+
+https://docs.google.com/presentation/d/1tM76oC-HhcGOPJgYGezV1pW56Rh4w2qaTdL8cczETX0/edit#slide=id.g2eeea21208f_0_36
+:::
+
+## 
+
+![](images/timeline-2.svg)
+
+## 
+
+![](images/timeline-3.svg)
 
 ## Identifying downstream context
+
+. . .
 
 ```{r}
 #| code-line-numbers: "5,9"
@@ -338,14 +354,14 @@ flights_delay <- flights |>
 
 _Departure delay by origin airport_
 
-## Data context <ins>can</ins> and <ins>should</ins> be embedded in your data
+## Downstream data context <ins>can</ins> and <ins>should</ins> be embedded in your data
 
 :::: {.columns}
 
 ::: {.column width="65%"}
 
 ```{r}
-#| code-line-numbers: "1,4,14,15,16"
+#| code-line-numbers: "14,15,16"
 #| eval: FALSE
 flights_delay_labelled <- flights_labelled |>
   select(origin, dest, arr_delay, dep_delay) |>
@@ -376,15 +392,36 @@ flights_delay_labelled <- flights_labelled |>
 ::::
 
 
-# Data <br> efficiency {.inverse}
+# Applications {.inverse}
 
-## Tabling
+## Data dictonary
+
+## Custom data exports
 
 ## Figures
 
-# Thank you {.inverse}
+## Tabling
 
-<br>
+
+# Wrap up {.inverse}
+
+## Resources {.small}
+
+* (2024) nycflights13 demo script <br>
+<https://github.com/shannonpileggi/context-is-king/blob/main/nycflights-delay-demo.R>
+
+* (2022) The case for variable labels in R <br> <https://www.pipinghotdata.com/posts/2022-09-13-the-case-for-variable-labels-in-r/> 
+
+* (2020) Leveraging labelled data in R <br> <https://www.pipinghotdata.com/posts/2020-12-23-leveraging-labelled-data-in-r/>
+
+* (2019) Advanced R 2e, Ch 3.3 Attributes <br> <https://adv-r.hadley.nz/vectors-chap.html?q=attributes#attributes>
+
+* (2015) Commit that introduced labels to the RStudio IDE data viewer <br>
+<https://github.com/rstudio/rstudio/commit/92026abeb9d9ee7a05bdf30a81a5f4d919ea438e>
+
+
+
+## Thank you
 
 Thank you to the **many** individuals who provided feedback both the abstract submission and the development of this talk.
 Your support was invaluable.
