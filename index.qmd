@@ -159,19 +159,22 @@ t1_unlabelled|>
 
 ![](images/travis_yolo.png)
 
+## {background-image="images/pexels-pixabay-39868.jpg" background-size=38% background-repeat=no-repeat background-position=right}
 
-## A journey to understand {background-image="images/pexels-pixabay-39868.jpg" background-size=30% background-repeat=no-repeat background-position=right}
+
+
+::: {style="text-align: right;" .larger .absolute right="38%"}
+<br>
+
+A journey to understand 
 
 <br>
 
-:::{.larger}
+source data &
 
-1. Source data.
-
-
-2. Downstream variables.
-
+downstream variables
 :::
+
 
 # Data stewardship {.inverse}
 
@@ -250,6 +253,32 @@ Between 31 - 116 columns, median 44
 `View(flights_labelled)`
 ![](images/flights_view_labelled.png)
 
+::: {.fragment .absolute right="2%" bottom="5%"}
+
+![](images/paul-rudd-double-take.gif){width="200"}
+
+
+:::
+
+
+## 
+
+![](images/timeline-1.svg)
+
+::: notes
+source for image in google slides at
+
+https://docs.google.com/presentation/d/1tM76oC-HhcGOPJgYGezV1pW56Rh4w2qaTdL8cczETX0/edit#slide=id.g2eeea21208f_0_36
+:::
+
+## 
+
+![](images/timeline-2.svg)
+
+## 
+
+![](images/timeline-3.svg)
+
 ## Assigning variable labels
 
 ```{r}
@@ -308,23 +337,6 @@ Further reading
 
 ::::
 
-## 
-
-![](images/timeline-1.svg)
-
-::: notes
-source for image in google slides at
-
-https://docs.google.com/presentation/d/1tM76oC-HhcGOPJgYGezV1pW56Rh4w2qaTdL8cczETX0/edit#slide=id.g2eeea21208f_0_36
-:::
-
-## 
-
-![](images/timeline-2.svg)
-
-## 
-
-![](images/timeline-3.svg)
 
 ## Identifying downstream context
 
@@ -391,6 +403,35 @@ flights_delay_labelled <- flights_labelled |>
 
 ::::
 
+## {background-image="images/jared-rice-NTyBbu66_SI-unsplash.jpg" background-size=35% background-repeat=no-repeat background-position=left} 
+
+:::: {.columns}
+
+::: {.column width="33%"}
+
+:::
+
+::: {.column width="67%"}
+
+<br>
+
+Applying variable labels encourages a **disciplined practice** of creating explicit
+and succinct variable descriptions, ensuring that **data context lives with the data**. 
+
+::: {.fragment} 
+
+This helps: 
+
+* current you, future you, & colleagues
+
+* peer review processes
+
+* creation of reusable data assets
+:::
+:::
+
+::::
+
 
 # Applications {.inverse}
 
@@ -405,18 +446,18 @@ flights_delay_labelled <- flights_labelled |>
 
 # Wrap up {.inverse}
 
-## Resources {.small}
+## Resources {.small list-style-type="none;"}
 
-* (2024) nycflights13 demo script <br>
+* (2024\) nycflights13 demo script <br>
 <https://github.com/shannonpileggi/context-is-king/blob/main/nycflights-delay-demo.R>
 
-* (2022) The case for variable labels in R <br> <https://www.pipinghotdata.com/posts/2022-09-13-the-case-for-variable-labels-in-r/> 
+* (2022\) The case for variable labels in R <br> <https://www.pipinghotdata.com/posts/2022-09-13-the-case-for-variable-labels-in-r/> 
 
-* (2020) Leveraging labelled data in R <br> <https://www.pipinghotdata.com/posts/2020-12-23-leveraging-labelled-data-in-r/>
+* (2020\) Leveraging labelled data in R <br> <https://www.pipinghotdata.com/posts/2020-12-23-leveraging-labelled-data-in-r/>
 
-* (2019) Advanced R 2e, Ch 3.3 Attributes <br> <https://adv-r.hadley.nz/vectors-chap.html?q=attributes#attributes>
+* (2019\) Advanced R 2e, Ch 3.3 Attributes <br> <https://adv-r.hadley.nz/vectors-chap.html?q=attributes#attributes>
 
-* (2015) Commit that introduced labels to the RStudio IDE data viewer <br>
+* (2015\) Commit that introduced labels to the RStudio IDE data viewer <br>
 <https://github.com/rstudio/rstudio/commit/92026abeb9d9ee7a05bdf30a81a5f4d919ea438e>
 
 
@@ -439,3 +480,8 @@ cat gif
 
 Photo by Pixabay from Pexels: https://www.pexels.com/photo/green-vines-39868/
 https://www.pexels.com/photo/green-vines-39868/
+
+<p><a href="https://giphy.com/gifs/double-take-shocked-paul-rudd-K0Mmal97YNYkw">via GIPHY</a></p>
+
+Photo by <a href="https://unsplash.com/@jareddrice?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Jared Rice</a> on <a href="https://unsplash.com/photos/woman-doing-yoga-meditation-on-brown-parquet-flooring-NTyBbu66_SI?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+  
