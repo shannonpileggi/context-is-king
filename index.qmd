@@ -51,6 +51,10 @@ Director of Flight Operations
 </iframe>
 
 
+::: footer
+<p><a href="https://giphy.com/gifs/content-7NoNw4pMNTvgc">via GIPHY</a></p>
+:::
+
 ## Success 🎉
 
 <br>
@@ -176,6 +180,10 @@ downstream variables
 :::
 
 
+::: footer
+[Photo by Pixabay from Pexels](https://www.pexels.com/photo/green-vines-39868/)
+:::
+
 # Data stewardship {.inverse}
 
 ## The code
@@ -257,6 +265,9 @@ Between 31 - 116 columns, median 44
 
 ![](images/paul-rudd-double-take.gif){width="200"}
 
+::: footer
+[via GIPHY](https://giphy.com/gifs/double-take-shocked-paul-rudd-K0Mmal97YNYkw)
+:::
 
 :::
 
@@ -390,7 +401,7 @@ flights_delay_labelled <- flights_labelled |>
   )  |>
   labelled::set_variable_labels(
     delay_category = "Departure delay by origin airport",
-    name = "Origin airport name"
+    name = "Origin airport"
   )
 ```
 :::
@@ -413,12 +424,13 @@ flights_delay_labelled <- flights_labelled |>
 
 ::: {.column width="67%"}
 
-<br>
 
-Applying variable labels encourages a **disciplined practice** of creating explicit
+Assigning variable labels encourages a **disciplined practice** of creating explicit
 and succinct variable descriptions, ensuring that **data context lives with the data**. 
 
 ::: {.fragment} 
+
+<br>
 
 This helps: 
 
@@ -432,56 +444,184 @@ This helps:
 
 ::::
 
+::: footer
+Photo by <a href="https://unsplash.com/@jareddrice?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Jared Rice</a> on <a href="https://unsplash.com/photos/woman-doing-yoga-meditation-on-brown-parquet-flooring-NTyBbu66_SI?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+:::
+
+
 
 # Applications {.inverse}
 
 ## Data dictonary
 
-## Custom data exports
+:::: {.columns}
 
-## Figures
+::: {.column width="50%"}
 
-## Tabling
+```{r}
+#| code-line-numbers: "1-7|10"
+#| eval: FALSE
+flights_schema <- tibble::lst(
+  airlines_labelled,
+  airports_labelled,
+  flights_labelled,
+  planes_labelled,
+  weather_labelled
+)
 
+flights_dictionary <- flights_schema |>
+  map(labelled::generate_dictionary) |>
+  enframe() |>
+  unnest(cols = value)
+```
+
+:::
+
+::: {.column .fragment width="50%"}
+`View(flights_dictionary)`
+![](images/flights_dictionary.gif)
+:::
+
+::::
+
+
+## Figures, unlabelled
+
+
+```{r}
+#| code-line-numbers: "1"
+flights_delay_labelled |>
+  ggplot(aes(x = name, fill = delay_category)) +
+  geom_bar()
+```
+
+## Figures, labelled
+
+```{r}
+#| code-line-numbers: "1,4"
+flights_delay_labelled |>
+  ggplot(aes(x = name, fill = delay_category)) +
+  geom_bar() +
+  ggeasy::easy_labs() 
+```
+
+
+## Tabling, unlabelled
+
+```{r}
+#| eval: FALSE
+#| code-line-numbers: "1,3"
+flights_delay |>
+  select(name, delay_category) |>
+  gtsummary::tbl_summary(
+    by = name
+  ) 
+```
+
+
+```{r}
+#| echo: FALSE
+t1_unlabelled |> 
+  as_gt() |> 
+  tab_style(
+    style = list(
+      cell_fill(color = "#FFFBC8")
+      ),
+    locations = cells_body(rows = 1, columns = "label")
+  )
+```
+
+
+## Tabling, labelled
+
+```{r}
+#| eval: FALSE
+#| code-line-numbers: "1,3"
+flights_delay_labelled |>
+  select(name, delay_category) |>
+  gtsummary::tbl_summary(
+    by = name
+  ) 
+```
+
+
+```{r}
+#| echo: FALSE
+flights_delay_labelled |>
+  select(name, delay_category) |>
+  tbl_summary(
+    by = name
+  ) |>  
+  modify_header(all_stat_cols() ~ "**{level}**  <br>N = {style_number(n)}") |> 
+  as_gt() |> 
+  tab_style(
+    style = list(
+      cell_fill(color = "#FFFBC8")
+      ),
+    locations = cells_body(rows = 1, columns = "label")
+  )
+```
 
 # Wrap up {.inverse}
 
-## Resources {.small list-style-type="none;"}
+## Summary 
+
+Variable labels
+
+* are visible in the RStudio IDE data viewer
+
+* can be efficiently leveraged in data products (eg., figures, tables)
+
+* are used in an array of packages (`haven`, `labelled`, `sjlabelled`, `gtsummary`, `ggeasy`, `Hmisc`, etc.)
+
+Explicitly defining variable labels creates readily understood and reusable data assets
+
+
+## Resources {.small}
 
 * (2024\) nycflights13 demo script <br>
-<https://github.com/shannonpileggi/context-is-king/blob/main/nycflights-delay-demo.R>
+<https://github.com/shannonpileggi/context-is-king/blob/main/nycflights-delay-demo.R>{style="font-size:0.8em;"}
 
-* (2022\) The case for variable labels in R <br> <https://www.pipinghotdata.com/posts/2022-09-13-the-case-for-variable-labels-in-r/> 
+* (2022\) The case for variable labels in R <br> <https://www.pipinghotdata.com/posts/2022-09-13-the-case-for-variable-labels-in-r/>{style="font-size:0.8em;"} 
 
-* (2020\) Leveraging labelled data in R <br> <https://www.pipinghotdata.com/posts/2020-12-23-leveraging-labelled-data-in-r/>
+* (2020\) Leveraging labelled data in R <br> <https://www.pipinghotdata.com/posts/2020-12-23-leveraging-labelled-data-in-r/>{style="font-size:0.8em;"}
 
-* (2019\) Advanced R 2e, Ch 3.3 Attributes <br> <https://adv-r.hadley.nz/vectors-chap.html?q=attributes#attributes>
+::: {.fragment}
+
+* (2019\) Advanced R 2e, Ch 3.3 Attributes <br> <https://adv-r.hadley.nz/vectors-chap.html?q=attributes#attributes>{style="font-size:0.8em;"}
 
 * (2015\) Commit that introduced labels to the RStudio IDE data viewer <br>
-<https://github.com/rstudio/rstudio/commit/92026abeb9d9ee7a05bdf30a81a5f4d919ea438e>
+<https://github.com/rstudio/rstudio/commit/92026abeb9d9ee7a05bdf30a81a5f4d919ea438e>{style="font-size:0.8em;"}
 
+:::
 
+::: {.fragment}
 
-## Thank you
+* (2024\) Positron issue to display column labels in data explorer 😇<br>
+<https://github.com/posit-dev/positron/issues/2971>{style="font-size:0.8em;"}
 
-Thank you to the **many** individuals who provided feedback both the abstract submission and the development of this talk.
-Your support was invaluable.
+:::
 
+## Cheers to variable labels 🥂 
+
+Thank you to the **many** individuals who have helped me work with variable 
+labels, and provided feedback on both the abstract 
+submission and the development of this talk. Your support was invaluable.
+
+. . .
+
+:::: {.columns} 
+
+::: {.column width="40%"}
+
+![](images/team_chicago.jpg)
+:::
+
+::: {.column width="60%"}
 <br>
+Travis consented use of his name; I assure you he always labels his variables.
+:::
 
-No Travis's were harmed in the making of this presentation.
+::::
 
-# Photos
 
-https://unsplash.com/photos/woman-wearing-black-jacket-sitting-on-gray-rock-and-using-binoculrs-dxFi8Ea670E
-
-cat gif
-<p><a href="https://giphy.com/gifs/content-7NoNw4pMNTvgc">via GIPHY</a></p>
-
-Photo by Pixabay from Pexels: https://www.pexels.com/photo/green-vines-39868/
-https://www.pexels.com/photo/green-vines-39868/
-
-<p><a href="https://giphy.com/gifs/double-take-shocked-paul-rudd-K0Mmal97YNYkw">via GIPHY</a></p>
-
-Photo by <a href="https://unsplash.com/@jareddrice?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Jared Rice</a> on <a href="https://unsplash.com/photos/woman-doing-yoga-meditation-on-brown-parquet-flooring-NTyBbu66_SI?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
-  

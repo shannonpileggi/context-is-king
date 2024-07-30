@@ -3,6 +3,8 @@ library(labelled)
 library(tidyverse)
 
 # labelled versions of all data -----
+# for alternative methods of assigning variable labels in bulk, see
+# https://www.pipinghotdata.com/posts/2022-09-13-the-case-for-variable-labels-in-r/
 
 airlines_labelled <- airlines |>
   set_variable_labels(
@@ -79,9 +81,9 @@ weather_labelled <- weather |>
   )
 
 
-# list of labelled data ----
+# list/schema of labelled data ----
 
-flights_database <- tibble::lst(
+flights_schema <- tibble::lst(
   airlines_labelled,
   airports_labelled,
   flights_labelled,
@@ -92,7 +94,7 @@ flights_database <- tibble::lst(
 
 # dictionary of labelled data ----
 
-flights_dictionary <- flights_database |>
+flights_dictionary <- flights_schema |>
   map(labelled::generate_dictionary) |>
   enframe() |>
   unnest(cols = value)
@@ -116,7 +118,7 @@ flights_delay_labelled <- flights_labelled |>
   ) |>
   labelled::set_variable_labels(
     delay_category = "Departure delay by origin airport",
-    name = "Origin airport name"
+    name = "Origin airport"
   )
 
 # unlabelled version of flights delay analysis data ----
@@ -138,35 +140,4 @@ flights_delay <- flights |>
 
 
 
-flights_delay <- flights |>
-  select(origin, dest, arr_delay, dep_delay) |>
-  left_join(
-    select(airports, faa, name),
-    join_by(origin == faa)
-  ) |>
-  mutate(
-    delay_category = fct_relevel(
-      case_when(
-        dep_delay < 0 ~ "Early",
-        dep_delay == 0 ~ "On time",
-        dep_delay > 0 ~ "Late"
-    ), 
-    c("Early", "On time", "Late"))
-  )
-
-
-# is this delay by origin or destination airport?
-# is this delay in departure time or arrival time?
-
-# 1. delay in departure time by origin airport
-# 2. delay in departure time by destination airport
-# 3. delay in arrival time by origin airport
-# 4. delay in arrival time by destination airport
-
-
-# TidyTuesday 2022, Week 28
-
-flights_labelled2 <- flights
-attr(flights_labelled2$year, "label") <- "Flight year of departure"
-attr(flights_labelled2$month, "label") <- "Flight month of departure"
 
