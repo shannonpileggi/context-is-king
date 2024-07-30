@@ -218,13 +218,18 @@ flights_delay <- flights |>
 <https://r4ds.had.co.nz/relational-data.html>
 :::
 
-## data i work with
+## Source data I work with
 
-93 data frames
+![](images/data-1.svg)
 
-Between 31 - 116 columns, median 44
+## Source data I work with
 
-1,384 unique column names across 93 data frames
+![](images/data-2.svg)
+
+
+## Source data I work with
+
+![](images/data-3.svg)
 
 ## Source data context
 
@@ -619,7 +624,7 @@ submission and the development of this talk. Your support was invaluable.
 
 ::: {.column width="60%"}
 <br>
-Travis consented use of his name; I assure you he always labels his variables.
+Travis consented use of his name; I assure you he always labels his variables. 😜
 :::
 
 ::::
