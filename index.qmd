@@ -653,7 +653,7 @@ Variable labels
 
 * can be efficiently leveraged in data products (eg., figures, tables)
 
-* are used in an array of packages (`haven`, `labelled`, `sjlabelled`, `gtsummary`, `ggeasy`, `Hmisc`, etc.)
+* are used in an array of packages (`haven`, `labelled`, `sjlabelled`, `gt`, `gtsummary`, `ggeasy`, `Hmisc`, etc.)
 
 Explicitly defining variable labels creates readily understood and reusable data assets
 
@@ -701,6 +701,14 @@ submission and the development of this talk. Your support was invaluable.
 ::: {.column width="60%"}
 <br>
 Travis consented use of his name; I assure you he always labels his variables. 😜
+:::
+
+::: {.footer style="font-size:1em;"}
+
+Slides: <https://shannonpileggi.github.io/context-is-king>
+
+Website: <https://www.pipinghotdata.com/>
+
 :::
 
 ::::
