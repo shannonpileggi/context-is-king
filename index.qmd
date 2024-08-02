@@ -184,7 +184,7 @@ downstream variables
 [Photo by Pixabay from Pexels](https://www.pexels.com/photo/green-vines-39868/)
 :::
 
-# Variable labels {.inverse}
+# Data stewardship {.inverse}
 
 ## The code
 
@@ -294,6 +294,46 @@ https://docs.google.com/presentation/d/1tM76oC-HhcGOPJgYGezV1pW56Rh4w2qaTdL8cczE
 ## 
 
 ![](images/timeline-3.svg)
+
+##
+
+![](images/sas_w_background.png){width="30%"}
+
+![](images/spss-1.svg){width="30%"}
+
+![](images/Stata_Logo.svg.png){width="30%"}
+
+
+## {background-image="images/brian-mcgowan-ggg_B1MeqQk-unsplash.jpg" background-size=100% background-repeat=no-repeat}
+
+![](images/sas_w_background.png){width="30%"}
+
+![](images/spss-1.svg){width="30%"}
+
+![](images/Stata_Logo.svg.png){width="30%"}
+
+::: footer
+
+Photo by <a href="https://unsplash.com/@sushioutlaw?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Brian McGowan</a> on <a href="https://unsplash.com/photos/white-robot-toy-on-black-background-ggg_B1MeqQk?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+  
+
+:::
+
+
+## {background-image="images/horst_welcome.png" background-size=50% background-repeat=no-repeat background-position=right}
+
+![](images/sas_w_background.png){width="30%"}f
+
+![](images/spss-1.svg){width="30%"}
+
+![](images/Stata_Logo.svg.png){width="30%"}
+
+::: footer
+
+[Artwork by Allison Horst](https://allisonhorst.com/data-science-art)
+
+:::
+
 
 ## Assigning variable labels
 
@@ -419,6 +459,12 @@ flights_delay_labelled <- flights_labelled |>
 
 ::::
 
+## {background-image="images/egg-5516366_1280.jpg" background-size=100% background-repeat=no-repeat}
+
+::: footer
+Image by <a href="https://pixabay.com/users/pxel_photographer-17831348/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=5516366">Elmer L. Geissler</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=5516366">Pixabay</a>
+:::
+
 ## {background-image="images/jared-rice-NTyBbu66_SI-unsplash.jpg" background-size=35% background-repeat=no-repeat background-position=left} 
 
 :::: {.columns}
@@ -453,6 +499,20 @@ This helps:
 Photo by <a href="https://unsplash.com/@jareddrice?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Jared Rice</a> on <a href="https://unsplash.com/photos/woman-doing-yoga-meditation-on-brown-parquet-flooring-NTyBbu66_SI?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
 :::
 
+
+## {background-image="images/china-6796350_1280.jpg" background-size=100% background-repeat=no-repeat} 
+
+
+::: {.absolute top=50 left=20  style="font-size:1.8em; padding: 0.3em 0.3em; background-color: rgba(255, 255, 255, .6);"}
+data
+
+stewardship
+:::
+
+
+::: footer
+Image by <a href="https://pixabay.com/users/yangguangwu-23578224/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=6796350">GuangWu YANG</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=6796350">Pixabay</a>
+:::
 
 ##
 
@@ -570,6 +630,12 @@ flights_delay_labelled |>
     locations = cells_body(rows = 1, columns = "label")
   )
 ```
+
+
+::: {.fragment}
+![](images/travis_yolo.png){.rotate .absolute bottom=50 right=50 width="200"}
+:::
+
 
 # Wrap up {.inverse}
 

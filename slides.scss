@@ -150,7 +150,18 @@ details>summary {
   .slide-background-content {
     background-color: #7090A5;
   }
-  
 
+}
 
-}  
+@keyframes rotate {
+  0% {transform: rotate(-30deg);}
+  50% {transform: rotate(30deg);}
+  100% {transform: rotate(-30deg);}
+}
+
+.rotate{
+    animation-name:rotate;
+    animation-duration:2s;
+    animation-iteration-count: infinite;
+}
+

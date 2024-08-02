@@ -570,6 +570,17 @@
       ],
       "Hash": "15e9634c0fcd294799e9b2e929ed1b86"
     },
+    "ggeasy": {
+      "Package": "ggeasy",
+      "Version": "0.1.4",
+      "Source": "Repository",
+      "Repository": "RSPM",
+      "Requirements": [
+        "ggplot2",
+        "rlang"
+      ],
+      "Hash": "d99c7c23645eeb0c034cb8ae5cf3a185"
+    },
     "ggplot2": {
       "Package": "ggplot2",
       "Version": "3.5.1",
@@ -661,7 +672,7 @@
     },
     "gt": {
       "Package": "gt",
-      "Version": "0.11.0",
+      "Version": "0.10.0",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
@@ -683,11 +694,11 @@
         "rlang",
         "sass",
         "scales",
+        "tibble",
         "tidyselect",
-        "vctrs",
         "xml2"
       ],
-      "Hash": "3470c2eb1123db6a2c54ec812de38284"
+      "Hash": "21737c74811cccac01b5097bcb0f8b4c"
     },
     "gtable": {
       "Package": "gtable",
