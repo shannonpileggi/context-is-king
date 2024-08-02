@@ -322,11 +322,17 @@ Photo by <a href="https://unsplash.com/@sushioutlaw?utm_content=creditCopyText&u
 
 ## {background-image="images/horst_welcome.png" background-size=50% background-repeat=no-repeat background-position=right}
 
-![](images/sas_w_background.png){width="30%"}f
+![](images/sas_w_background.png){width="30%"}
 
 ![](images/spss-1.svg){width="30%"}
 
 ![](images/Stata_Logo.svg.png){width="30%"}
+
+::: {.fragment}
+
+![](images/haven.png){.absolute bottom="30%" right="45%" width="200"}
+
+:::
 
 ::: footer
 
