@@ -16,6 +16,7 @@ execute:
   freeze: auto
 ---
 
+
 # The setting {.inverse}
 
 ## An email
@@ -645,17 +646,51 @@ flights_delay_labelled |>
 
 # Wrap up {.inverse}
 
+
+
+
 ## Summary 
 
-Variable labels
+![](images/summary-1.svg)
 
-* are visible in the RStudio IDE data viewer
+::: footer
+<https://r4ds.had.co.nz/introduction.html>
+:::
 
-* can be efficiently leveraged in data products (eg., figures, tables)
 
-* are used in an array of packages (`haven`, `labelled`, `sjlabelled`, `gt`, `gtsummary`, `ggeasy`, `Hmisc`, etc.)
+## Summary 
 
-Explicitly defining variable labels creates readily understood and reusable data assets
+![](images/summary-2.svg)
+
+::: footer
+<https://r4ds.had.co.nz/introduction.html>
+:::
+
+
+## {background-image="images/abigail-lynn-9y8c_YDUrYA-unsplash.jpg" background-size=100% background-repeat=no-repeat} 
+
+
+::: {.fragment .absolute top=100 left=20  style="font-size:1.0em; padding: 0.3em 0.3em; background-color: rgba(255, 255, 255, .9);"}
+
+<style>
+td, th {
+   border: none!important;
+}
+</style>
+
+|              | source |downstream |
+|-------------:|:-------|:----------|
+| data frames  | ~90    |       ~50 | 
+| variables    | ~1400  |      ~700 | 
+
+:::
+
+
+::: footer
+Photo by <a href="https://unsplash.com/@shmabbss?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Abigail Lynn</a> on <a href="https://unsplash.com/photos/greenhouse-interior-9y8c_YDUrYA?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+:::
+
+
 
 
 ## Resources {.small}
@@ -703,11 +738,11 @@ submission and the development of this talk. Your support was invaluable.
 Travis consented use of his name; I assure you he always labels his variables. 😜
 :::
 
-::: {.footer style="font-size:1em;"}
+::: {.footer style="font-size:0.6em;"}
 
-Slides: <https://shannonpileggi.github.io/context-is-king>
+**Slides:** [shannonpileggi.github.io/context-is-king](https://shannonpileggi.github.io/context-is-king)
 
-Website: <https://www.pipinghotdata.com/>
+**Website:** [pipinghotdata.com](https://www.pipinghotdata.com/)
 
 :::
 
