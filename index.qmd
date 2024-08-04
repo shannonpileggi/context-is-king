@@ -566,6 +566,8 @@ flights_dictionary <- flights_schema |>
 
 ```{r}
 #| code-line-numbers: "1"
+#| fig-width: 6
+#| fig-asp: 0.618
 flights_delay_labelled |>
   ggplot(aes(x = name, fill = delay_category)) +
   geom_bar()
@@ -575,6 +577,8 @@ flights_delay_labelled |>
 
 ```{r}
 #| code-line-numbers: "1,4"
+#| fig-width: 6
+#| fig-asp: 0.618
 flights_delay_labelled |>
   ggplot(aes(x = name, fill = delay_category)) +
   geom_bar() +
