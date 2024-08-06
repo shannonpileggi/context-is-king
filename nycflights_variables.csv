@@ -52,3 +52,9 @@ weather,"Hourly meterological data for LGA, JFK and EWR",precip,Weather precipit
 weather,"Hourly meterological data for LGA, JFK and EWR",pressure,Weather sea level pressure (millibars)
 weather,"Hourly meterological data for LGA, JFK and EWR",visib,Weather visibility (miles)
 weather,"Hourly meterological data for LGA, JFK and EWR",time_hour,Weather date/time
+flights_delay,Departure delay assessment by origin airport,origin,Flight origin airport
+flights_delay,Departure delay assessment by origin airport,dest,Flight destination airport
+flights_delay,Departure delay assessment by origin airport,arr_delay,Flight arrival delay (minutes)
+flights_delay,Departure delay assessment by origin airport,dep_delay,Flight departure delay (minutes)
+flights_delay,Departure delay assessment by origin airport,name,Origin airport
+flights_delay,Departure delay assessment by origin airport,delay_category,Departure delay by origin airport
