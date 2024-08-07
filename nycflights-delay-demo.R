@@ -2,7 +2,8 @@ library(nycflights13)
 library(labelled)
 library(tidyverse)
 
-# labelled versions of all data -----
+# ------------------------------------------------------------------------------
+# more manual way of labelling all versions of all data -----
 # for alternative methods of assigning variable labels in bulk, see
 # https://www.pipinghotdata.com/posts/2022-09-13-the-case-for-variable-labels-in-r/
 
@@ -81,6 +82,7 @@ weather_labelled <- weather |>
   )
 
 
+# ------------------------------------------------------------------------------
 # list/schema of labelled data ----
 
 flights_schema <- tibble::lst(
@@ -99,10 +101,10 @@ flights_dictionary <- flights_schema |>
   enframe() |>
   unnest(cols = value)
 
-# write_excel_csv(flights_dictionary, "images/flights_dictionary.csv")
 
+
+# ------------------------------------------------------------------------------
 # labelled version of flights delay analysis data ----
-
 flights_delay_labelled <- flights_labelled |>
   select(origin, dest, arr_delay, dep_delay) |>
   left_join(
@@ -122,8 +124,6 @@ flights_delay_labelled <- flights_labelled |>
   )
 
 # unlabelled version of flights delay analysis data ----
-
-
 flights_delay <- flights |>
   select(origin, dest, arr_delay, dep_delay) |>
   left_join(
@@ -141,3 +141,56 @@ flights_delay <- flights |>
 
 
 
+# ------------------------------------------------------------------------------
+# install.packages("devtools")
+# devtools::install_github("pcctc/croquet")
+
+# more streamlined/bulk methods for label assignment
+
+# assign labels to a single data frame
+flights_labelled <- flights |> 
+  croquet::set_derived_variable_labels(
+    df_name = "flights",
+    path = "nycflights_variables.csv"
+  )
+
+# create unlabelled list schema of source data ----
+flights_schema_unlabelled <- tibble::lst(
+  airlines,
+  airports,
+  flights,
+  planes,
+  weather
+)
+
+# assign labels to a list of data frames -----
+flights_schema_labelled <-
+  purrr::map2(
+    flights_schema_unlabelled,
+    names(flights_schema_unlabelled),
+    \(x, y) croquet::set_derived_variable_labels(
+      data = x,
+      df_name = y,
+      path = "nycflights_variables.csv"
+    )
+  )
+
+
+# create downstream data and assign variable labels ----
+flights_delay_labelled <- flights |>
+  select(origin, dest, arr_delay, dep_delay) |>
+  left_join(
+    select(airports, faa, name),
+    join_by(origin == faa)
+  ) |>
+  mutate(
+    delay_category = case_when(
+      dep_delay < 0 ~ "Early",
+      dep_delay == 0 ~ "On time",
+      dep_delay > 0 ~ "Late"
+    ) |> fct_relevel("Early", "On time", "Late")
+  ) |> 
+  croquet::set_derived_variable_labels(
+    df_name = "flights_delay",
+    path = "nycflights_variables.csv"
+  )

@@ -219,18 +219,6 @@ flights_delay <- flights |>
 <https://r4ds.had.co.nz/relational-data.html>
 :::
 
-## Source data I work with
-
-![](images/data-1.svg)
-
-## Source data I work with
-
-![](images/data-2.svg)
-
-
-## Source data I work with
-
-![](images/data-3.svg)
 
 ## Source data context
 
@@ -259,6 +247,27 @@ flights_delay <- flights |>
 ![](images/flights_dictionary_excel.png)
 :::
 ::::
+
+## {background-image="images/tunnel-7484734_1280.jpg" background-size=100% background-repeat=no-repeat}
+
+<br>
+
+<br>
+
+:::: {.columns}
+::: {.column}
+![](images/flights_view_unlabelled.png)
+:::
+
+::: {.column}
+![](images/flights_dictionary_excel.png)
+:::
+::::
+
+::: footer
+Image by <a href="https://pixabay.com/users/jplenio-7645255/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=7484734">Joe</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=7484734">Pixabay</a>
+:::
+  
 
 ## Source data context <ins>can</ins> and <ins>should</ins> be embedded in your data
 
@@ -354,6 +363,18 @@ flights_labelled <- flights |>
   )
 ```
 
+:::: {.columns}
+
+::: {.column width="30%"}
+Further reading
+:::
+
+::: {.column width="70%"}
+[The case for variable labels in R](https://www.pipinghotdata.com/posts/2022-09-13-the-case-for-variable-labels-in-r/) 
+:::
+
+::::
+
 . . .
 
 <br>
@@ -366,10 +387,6 @@ attr(flights_labelled$month, "label") <- "Flight month of departure"
 ...
 ```
 
-<br>
-
-. . .
-
 :::: {.columns}
 
 ::: {.column width="30%"}
@@ -377,12 +394,12 @@ Further reading
 :::
 
 ::: {.column width="70%"}
-[The case for variable labels in R](https://www.pipinghotdata.com/posts/2022-09-13-the-case-for-variable-labels-in-r/) 
-
 [Advanced R, Ch 3.3 Attributes](https://adv-r.hadley.nz/vectors-chap.html?q=attributes#attributes)
 :::
 
 ::::
+
+
 
 ## Viewing labelled data
 
@@ -648,9 +665,106 @@ flights_delay_labelled |>
 :::
 
 
+
+# My work {.inverse}
+
+## Source data I work with
+
+![](images/data-1.svg)
+
+## Source data I work with
+
+![](images/data-2.svg)
+
+
+## Source data I work with
+
+![](images/data-3.svg)
+
+
+## {background-image="images/chuttersnap-UmncJq4KPcA-unsplash.jpg" background-size=100% background-repeat=no-repeat} 
+
+
+::: {.fragment .absolute top=20 right=20  style="font-size:1.0em; padding: 0.3em 0.3em; background-color: rgba(149, 159, 125, .8);"}
+
+<style>
+td, th {
+   border: none!important;
+}
+</style>
+
+|              | source |downstream |
+|-------------:|:-------|:----------|
+| data frames  | ~90    |       ~50 | 
+| variables    | ~1400  |      ~700 | 
+
+:::
+
+
+::: footer
+Photo by <a href="https://unsplash.com/@chuttersnap?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">CHUTTERSNAP</a> on <a href="https://unsplash.com/photos/five-green-plants-UmncJq4KPcA?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+:::
+
+## A strategy - single data frame
+
+1. Maintain a csv with metadata.
+![](images/nycflights_variables_csv.png){}
+
+. . .
+
+2. Apply custom function for bulk label assignment.
+```{r}
+#| eval: FALSE
+#| code-line-numbers: "2"
+flights_labelled <- flights |> 
+  croquet::set_derived_variable_labels(
+    df_name = "flights",
+    path = "nycflights_variables.csv"
+  )
+```
+
+
+## A strategy - list of data frames
+
+1. Maintain a csv with metadata.
+
+2. Apply custom function for bulk label assignment.
+```{r}
+#| eval: FALSE
+#| code-line-numbers: "5"
+flights_schema_labelled <-
+  purrr::map2(
+    flights_schema,
+    names(flights_schema),
+    \(x, y) croquet::set_derived_variable_labels(
+      data = x,
+      df_name = y,
+      path = "nycflights_variables.csv"
+    )
+  )
+```
+
+
+## A strategy - downstream data
+
+1. Add metadata for new data frame.
+![](images/nycflights_variables_csv_with_delay_2lines.png){}
+
+2. Apply custom function for bulk label assignment.
+```{r}
+#| eval: FALSE
+#| code-line-numbers: "5"
+flights_delay <- flights |>
+  select(...) |>
+  left_join(...) |> 
+  mutate(...) |> 
+  croquet::set_derived_variable_labels(
+    df_name = "flights_delay",
+    path = "nycflights_variables.csv"
+  )
+```
+
 # Wrap up {.inverse}
-
-
 
 
 ## Summary 
@@ -671,49 +785,25 @@ flights_delay_labelled |>
 :::
 
 
-## {background-image="images/abigail-lynn-9y8c_YDUrYA-unsplash.jpg" background-size=100% background-repeat=no-repeat} 
-
-
-::: {.fragment .absolute top=100 left=20  style="font-size:1.0em; padding: 0.3em 0.3em; background-color: rgba(255, 255, 255, .9);"}
-
-<style>
-td, th {
-   border: none!important;
-}
-</style>
-
-|              | source |downstream |
-|-------------:|:-------|:----------|
-| data frames  | ~90    |       ~50 | 
-| variables    | ~1400  |      ~700 | 
-
-:::
-
-
-::: footer
-Photo by <a href="https://unsplash.com/@shmabbss?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Abigail Lynn</a> on <a href="https://unsplash.com/photos/greenhouse-interior-9y8c_YDUrYA?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
-:::
-
-
-
+## Universe
 
 ## Resources {.small}
 
 * (2024\) nycflights13 demo script <br>
 <https://github.com/shannonpileggi/context-is-king/blob/main/nycflights-delay-demo.R>{style="font-size:0.8em;"}
 
+* (2022\) {croquet} package <br>
+<https://github.com/pcctc/croquet>{style="font-size:0.8em;"}
+
 * (2022\) The case for variable labels in R <br> <https://www.pipinghotdata.com/posts/2022-09-13-the-case-for-variable-labels-in-r/>{style="font-size:0.8em;"} 
 
 * (2020\) Leveraging labelled data in R <br> <https://www.pipinghotdata.com/posts/2020-12-23-leveraging-labelled-data-in-r/>{style="font-size:0.8em;"}
-
-::: {.fragment}
 
 * (2019\) Advanced R 2e, Ch 3.3 Attributes <br> <https://adv-r.hadley.nz/vectors-chap.html?q=attributes#attributes>{style="font-size:0.8em;"}
 
 * (2015\) Commit that introduced labels to the RStudio IDE data viewer <br>
 <https://github.com/rstudio/rstudio/commit/92026abeb9d9ee7a05bdf30a81a5f4d919ea438e>{style="font-size:0.8em;"}
 
-:::
 
 ::: {.fragment}
 
