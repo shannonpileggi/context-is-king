@@ -165,15 +165,15 @@ flights_schema_unlabelled <- tibble::lst(
 
 # assign labels to a list of data frames -----
 flights_schema_labelled <-
-  purrr::map2(
+  purrr::imap(
     flights_schema_unlabelled,
-    names(flights_schema_unlabelled),
     \(x, y) croquet::set_derived_variable_labels(
       data = x,
       df_name = y,
       path = "nycflights_variables.csv"
     )
   )
+
 
 
 # create downstream data and assign variable labels ----

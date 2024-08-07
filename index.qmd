@@ -248,7 +248,14 @@ flights_delay <- flights |>
 :::
 ::::
 
-## {background-image="images/tunnel-7484734_1280.jpg" background-size=100% background-repeat=no-repeat}
+## {background-image="images/tunnel-7484734_1280.jpg" background-size=100% background-repeat=no-repeat visibility="uncounted"}
+
+::: footer
+Image by <a href="https://pixabay.com/users/jplenio-7645255/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=7484734">Joe</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=7484734">Pixabay</a>
+:::  
+
+
+## {background-image="images/tunnel-7484734_1280.jpg" background-size=100% background-repeat=no-repeat visibility="uncounted"}
 
 <br>
 
@@ -267,6 +274,7 @@ flights_delay <- flights |>
 ::: footer
 Image by <a href="https://pixabay.com/users/jplenio-7645255/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=7484734">Joe</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=7484734">Pixabay</a>
 :::
+  
   
 
 ## Source data context <ins>can</ins> and <ins>should</ins> be embedded in your data
@@ -666,18 +674,18 @@ flights_delay_labelled |>
 
 
 
-# My work {.inverse}
+# In practice {.inverse}
 
-## Source data I work with
+## Source data I work with 
 
 ![](images/data-1.svg)
 
-## Source data I work with
+## Source data I work with {visibility="uncounted"}
 
 ![](images/data-2.svg)
 
 
-## Source data I work with
+## Source data I work with  {visibility="uncounted"}
 
 ![](images/data-3.svg)
 
@@ -705,37 +713,24 @@ td, th {
 Photo by <a href="https://unsplash.com/@chuttersnap?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">CHUTTERSNAP</a> on <a href="https://unsplash.com/photos/five-green-plants-UmncJq4KPcA?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
 :::
 
-## A strategy - single data frame
-
-1. Maintain a csv with metadata.
-![](images/nycflights_variables_csv.png){}
-
-. . .
-
-2. Apply custom function for bulk label assignment.
-```{r}
-#| eval: FALSE
-#| code-line-numbers: "2"
-flights_labelled <- flights |> 
-  croquet::set_derived_variable_labels(
-    df_name = "flights",
-    path = "nycflights_variables.csv"
-  )
-```
-
-
 ## A strategy - list of data frames
 
 1. Maintain a csv with metadata.
 
+![](images/nycflights_variables_csv.png){}
+
+## A strategy - list of data frames {visibility="uncounted"}
+
+1. Maintain a csv with metadata.
+
 2. Apply custom function for bulk label assignment.
+
 ```{r}
 #| eval: FALSE
-#| code-line-numbers: "5"
+#| code-line-numbers: "4"
 flights_schema_labelled <-
-  purrr::map2(
-    flights_schema,
-    names(flights_schema),
+  purrr::imap(
+    flights_schema_unlabelled,
     \(x, y) croquet::set_derived_variable_labels(
       data = x,
       df_name = y,
@@ -744,6 +739,7 @@ flights_schema_labelled <-
   )
 ```
 
+3. Save list as .RDS for a reusable data asset.
 
 ## A strategy - downstream data
 
@@ -764,6 +760,8 @@ flights_delay <- flights |>
   )
 ```
 
+3. Save data frame as .RDS for a reusable data asset.
+
 # Wrap up {.inverse}
 
 
@@ -776,7 +774,7 @@ flights_delay <- flights |>
 :::
 
 
-## Summary 
+## Summary  {visibility="uncounted"}
 
 ![](images/summary-2.svg)
 
@@ -785,7 +783,23 @@ flights_delay <- flights |>
 :::
 
 
-## Universe
+## {background-image="images/universe-1.svg" background-size=100% background-repeat=no-repeat} 
+
+::: footer
+Photo by <a href="https://unsplash.com/@jeremythomasphoto?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Jeremy Thomas</a> on <a href="https://unsplash.com/photos/the-stars-and-galaxy-as-seen-from-rocky-mountain-national-park-4dpAqfTbvKA?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+:::
+
+## {background-image="images/universe-2.svg" background-size=100% background-repeat=no-repeat  visibility="uncounted"} 
+
+::: footer
+Photo by <a href="https://unsplash.com/@jeremythomasphoto?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Jeremy Thomas</a> on <a href="https://unsplash.com/photos/the-stars-and-galaxy-as-seen-from-rocky-mountain-national-park-4dpAqfTbvKA?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>  
+:::
+
+## {background-image="images/universe-3.svg" background-size=100% background-repeat=no-repeat  visibility="uncounted"} 
+
+::: footer
+Photo by <a href="https://unsplash.com/@jeremythomasphoto?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Jeremy Thomas</a> on <a href="https://unsplash.com/photos/the-stars-and-galaxy-as-seen-from-rocky-mountain-national-park-4dpAqfTbvKA?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>  
+:::
 
 ## Resources {.small}
 
