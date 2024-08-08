@@ -801,6 +801,23 @@ Photo by <a href="https://unsplash.com/@jeremythomasphoto?utm_content=creditCopy
 Photo by <a href="https://unsplash.com/@jeremythomasphoto?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Jeremy Thomas</a> on <a href="https://unsplash.com/photos/the-stars-and-galaxy-as-seen-from-rocky-mountain-national-park-4dpAqfTbvKA?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>  
 :::
 
+## {.larger}
+
+
+**Do you have sufficient metadata to facilitate reusable data assets?**
+
+<br>
+
+. . .
+
+**Can you leverage the metadata in your programming environment?**
+
+<br>
+
+. . .
+
+**If not, why not?**
+
 ## Resources {.small}
 
 * (2024\) nycflights13 demo script <br>
