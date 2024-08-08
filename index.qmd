@@ -803,20 +803,18 @@ Photo by <a href="https://unsplash.com/@jeremythomasphoto?utm_content=creditCopy
 
 ## {.larger}
 
+<br>
 
-**Do you have sufficient metadata to facilitate reusable data assets?**
+
+**Do you have [sufficient metadata]{.highlightblock} to facilitate [reusable data assets]{.highlightblock}?**
 
 <br>
 
 . . .
 
-**Can you leverage the metadata in your programming environment?**
+**Can you [access and leverage]{.highlightblock} the metadata in your [programming environment]{.highlightblock}?**
 
-<br>
 
-. . .
-
-**If not, why not?**
 
 ## Resources {.small}
 
