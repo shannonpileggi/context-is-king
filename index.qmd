@@ -248,11 +248,6 @@ flights_delay <- flights |>
 :::
 ::::
 
-## {background-image="images/tunnel-7484734_1280.jpg" background-size=100% background-repeat=no-repeat visibility="uncounted"}
-
-::: footer
-Image by <a href="https://pixabay.com/users/jplenio-7645255/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=7484734">Joe</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=7484734">Pixabay</a>
-:::  
 
 
 ## {background-image="images/tunnel-7484734_1280.jpg" background-size=100% background-repeat=no-repeat visibility="uncounted"}
@@ -262,11 +257,11 @@ Image by <a href="https://pixabay.com/users/jplenio-7645255/?utm_source=link-att
 <br>
 
 :::: {.columns}
-::: {.column}
+::: {.column .fragment}
 ![](images/flights_view_unlabelled.png)
 :::
 
-::: {.column}
+::: {.column .fragment}
 ![](images/flights_dictionary_excel.png)
 :::
 ::::
@@ -372,6 +367,7 @@ flights_labelled <- flights |>
 ```
 
 :::: {.columns}
+
 
 ::: {.column width="30%"}
 Further reading
@@ -532,13 +528,50 @@ Photo by <a href="https://unsplash.com/@jareddrice?utm_content=creditCopyText&ut
 :::
 
 
+
 ## {background-image="images/china-6796350_1280.jpg" background-size=100% background-repeat=no-repeat} 
 
 
-::: {.absolute top=50 left=20  style="font-size:1.8em; padding: 0.3em 0.3em; background-color: rgba(255, 255, 255, .6);"}
-data
 
-stewardship
+::: {.absolute top=0 left=0  style="font-size:1.8em; padding: 0.3em 0.3em; background-color: rgba(255, 255, 255, .7);"}
+data stewardship
+:::
+
+
+::: {.fragment .absolute bottom=0 right=0  style="font-size:1.3em; padding: 0.3em 0.3em; background-color: rgba(255, 255, 255, .8); text-align: center;"}
+
+practice of ensuring 
+
+that data assets are 
+
+accessible, secure,
+
+trustworthy, and usable
+
+:::
+
+
+::: footer
+Image by <a href="https://pixabay.com/users/yangguangwu-23578224/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=6796350">GuangWu YANG</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=6796350">Pixabay</a>
+:::
+
+## {background-image="images/china-6796350_1280.jpg" background-size=100% background-repeat=no-repeat visibility="uncounted"} 
+
+
+
+::: {.absolute top=0 left=0  style="font-size:1.8em; padding: 0.3em 0.3em; background-color: rgba(255, 255, 255, .7);"}
+data stewardship
+:::
+
+
+::: {.absolute bottom=0 right=0  style="font-size:1.3em; padding: 0.3em 0.3em; background-color: rgba(255, 255, 255, .8); text-align: center;"}
+practice of ensuring 
+
+that data assets are 
+
+accessible, secure,
+
+**trustworthy**, and **usable**
 :::
 
 
@@ -713,6 +746,28 @@ td, th {
 Photo by <a href="https://unsplash.com/@chuttersnap?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">CHUTTERSNAP</a> on <a href="https://unsplash.com/photos/five-green-plants-UmncJq4KPcA?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
 :::
 
+
+## A strategy - downstream data
+
+1. Add metadata for new data frame.
+![](images/nycflights_variables_csv_with_delay_2lines.png){}
+
+2. Apply custom function for bulk label assignment.
+```{r}
+#| eval: FALSE
+#| code-line-numbers: "5"
+flights_delay <- flights |>
+  select(...) |>
+  left_join(...) |> 
+  mutate(...) |> 
+  croquet::set_derived_variable_labels(
+    df_name = "flights_delay",
+    path = "nycflights_variables.csv"
+  )
+```
+
+3. Save data frame as .RDS for a reusable data asset.
+
 ## A strategy - list of data frames
 
 1. Maintain a csv with metadata.
@@ -741,26 +796,8 @@ flights_schema_labelled <-
 
 3. Save list as .RDS for a reusable data asset.
 
-## A strategy - downstream data
 
-1. Add metadata for new data frame.
-![](images/nycflights_variables_csv_with_delay_2lines.png){}
 
-2. Apply custom function for bulk label assignment.
-```{r}
-#| eval: FALSE
-#| code-line-numbers: "5"
-flights_delay <- flights |>
-  select(...) |>
-  left_join(...) |> 
-  mutate(...) |> 
-  croquet::set_derived_variable_labels(
-    df_name = "flights_delay",
-    path = "nycflights_variables.csv"
-  )
-```
-
-3. Save data frame as .RDS for a reusable data asset.
 
 # Wrap up {.inverse}
 
@@ -818,6 +855,11 @@ Photo by <a href="https://unsplash.com/@jeremythomasphoto?utm_content=creditCopy
 
 ## Resources {.small}
 
+* (2024\) Positron issue to display column labels in data explorer 😇<br>
+<https://github.com/posit-dev/positron/issues/2971>{style="font-size:0.8em;"}
+
+. . .
+
 * (2024\) nycflights13 demo script <br>
 <https://github.com/shannonpileggi/context-is-king/blob/main/nycflights-delay-demo.R>{style="font-size:0.8em;"}
 
@@ -833,13 +875,6 @@ Photo by <a href="https://unsplash.com/@jeremythomasphoto?utm_content=creditCopy
 * (2015\) Commit that introduced labels to the RStudio IDE data viewer <br>
 <https://github.com/rstudio/rstudio/commit/92026abeb9d9ee7a05bdf30a81a5f4d919ea438e>{style="font-size:0.8em;"}
 
-
-::: {.fragment}
-
-* (2024\) Positron issue to display column labels in data explorer 😇<br>
-<https://github.com/posit-dev/positron/issues/2971>{style="font-size:0.8em;"}
-
-:::
 
 ## Cheers to variable labels 🥂 
 
@@ -858,7 +893,9 @@ submission and the development of this talk. Your support was invaluable.
 
 ::: {.column width="60%"}
 <br>
-Travis consented use of his name; I assure you he always labels his variables. 😜
+Travis consented use 
+
+of his name 🤗
 :::
 
 ::: {.footer style="font-size:0.6em;"}
