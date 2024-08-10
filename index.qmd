@@ -32,6 +32,8 @@ source("nycflights-delay-demo.R")
 
 <br>
 
+::: {style="padding: 0.5em 0.5em; background-color: rgba(255, 255, 255, 1.0);"}
+
 Hi Shannon -
 
 I see Travis is out on vacation.
@@ -43,6 +45,8 @@ Thanks,
 Sarah
 
 Director of Flight Operations
+
+:::
 
 ## {.center}
 
@@ -76,6 +80,8 @@ t1_unlabelled
 
 <br>
 
+::: {style="padding: 0.5em 0.5em; background-color: rgba(255, 255, 255, 1.0);"}
+
 Hi Shannon -
 
 I see Travis is out on vacation.
@@ -87,6 +93,8 @@ Thanks,
 Sarah
 
 Director of Flight Operations
+
+:::
 
 ## Walk through the numbers
 
@@ -421,6 +429,9 @@ Further reading
 
 ::::
 
+## Viewing labelled data
+`str(flights_labelled)`
+![](images/str_flights_labelled_hl.png)
 
 ## Identifying downstream context
 
@@ -448,7 +459,7 @@ flights_delay <- flights |>
 
 `delay_category` represents 
 
-_Departure delay by origin airport_
+_Departure timing by origin airport_
 
 ## Downstream data context <ins>can</ins> and <ins>should</ins> be embedded in your data
 
@@ -473,7 +484,7 @@ flights_delay_labelled <- flights_labelled |>
     ) |> fct_relevel("Early", "On time", "Late")
   )  |>
   labelled::set_variable_labels(
-    delay_category = "Departure delay by origin airport",
+    delay_category = "Departure timing by origin airport",
     name = "Origin airport"
   )
 ```
@@ -724,7 +735,7 @@ nycflights has
 
 
 ::: {.absolute bottom=0 right=0  style="font-size:1.3em; padding: 1.0em 1.0em; background-color: #7090A5; color: rgb(255,255,255); font-weight: bold; text-align: center;"}
-a trial has
+a clinical trial has
 
 90 data frames &
 
@@ -749,9 +760,9 @@ td, th {
 </style>
 
 |              | source |downstream |
-|-------------:|:-------|:----------|
-| data frames  | ~90    |       ~50 | 
-| variables    | ~1400  |      ~700 | 
+|-------------:|-------:|----------:|
+| data frames  | 90     |        50 | 
+| variables    | 1400   |       700 | 
 
 :::
 
@@ -761,16 +772,16 @@ Photo by <a href="https://unsplash.com/@chuttersnap?utm_content=creditCopyText&u
 :::
 
 
-## A strategy - downstream data
+## Our strategy - downstream data
 
-1. Add metadata for new data frame.
+1. Maintain a csv with metadata.
 ![](images/nycflights_variables_csv_with_delay_2lines.png){}
 
 2. Apply custom function for bulk label assignment.
 ```{r}
 #| eval: FALSE
 #| code-line-numbers: "5"
-flights_delay <- flights |>
+flights_delay_labelled <- flights |>
   select(...) |>
   left_join(...) |> 
   mutate(...) |> 
@@ -780,15 +791,14 @@ flights_delay <- flights |>
   )
 ```
 
-3. Save data frame as .RDS for a reusable data asset.
 
-## A strategy - list of data frames
+## Our strategy - list of data frames
 
 1. Maintain a csv with metadata.
 
 ![](images/nycflights_variables_csv.png){}
 
-## A strategy - list of data frames {visibility="uncounted"}
+## Our strategy - list of data frames {visibility="uncounted"}
 
 1. Maintain a csv with metadata.
 
@@ -808,7 +818,6 @@ flights_schema_labelled <-
   )
 ```
 
-3. Save list as .RDS for a reusable data asset.
 
 
 
@@ -834,23 +843,116 @@ flights_schema_labelled <-
 :::
 
 
-## {background-image="images/universe-1.svg" background-size=100% background-repeat=no-repeat} 
+## 
+
+:::: {.columns .slatebluebold}
+
+::: {.column width=33%}
+R
+
+:::
+
+::: {.column width=33%}
+RStudio
+
+
+:::
+
+::: {.column width=33%}
+R data
+
+
+:::
+
+
+
+::::
+
+
+
+
+## {background-image="images/jeremy-thomas-4dpAqfTbvKA-unsplash.jpg" background-size=100% background-repeat=no-repeat} 
+
+:::: {.columns .whitebold}
+
+::: {.column width=33%}
+R
+
+:::
+
+::: {.column width=33%}
+RStudio
+
+
+:::
+
+::: {.column width=33%}
+R data
+
+
+:::
+
+
+
+::::
+
 
 ::: footer
 Photo by <a href="https://unsplash.com/@jeremythomasphoto?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Jeremy Thomas</a> on <a href="https://unsplash.com/photos/the-stars-and-galaxy-as-seen-from-rocky-mountain-national-park-4dpAqfTbvKA?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
 :::
 
-## {background-image="images/universe-2.svg" background-size=100% background-repeat=no-repeat  visibility="uncounted"} 
 
-::: footer
-Photo by <a href="https://unsplash.com/@jeremythomasphoto?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Jeremy Thomas</a> on <a href="https://unsplash.com/photos/the-stars-and-galaxy-as-seen-from-rocky-mountain-national-park-4dpAqfTbvKA?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>  
+
+## {background-image="images/jeremy-thomas-4dpAqfTbvKA-unsplash.jpg" background-size=100% background-repeat=no-repeat} 
+
+:::: {.columns .whitebold}
+
+::: {.column width=33%}
+R
+
+Python
+
+Julia
+
 :::
 
-## {background-image="images/universe-3.svg" background-size=100% background-repeat=no-repeat  visibility="uncounted"} 
+::: {.column width=33%}
+RStudio
+
+VS Code
+
+Positron
+
+:::
+
+::: {.column width=33%}
+R data
+
+SAS
+
+XPT
+
+parquet
+
+csv
+
+JSON
+
+DuckDB
+
+PostgreSQL
+
+:::
+
+
+
+::::
+
 
 ::: footer
-Photo by <a href="https://unsplash.com/@jeremythomasphoto?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Jeremy Thomas</a> on <a href="https://unsplash.com/photos/the-stars-and-galaxy-as-seen-from-rocky-mountain-national-park-4dpAqfTbvKA?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>  
+Photo by <a href="https://unsplash.com/@jeremythomasphoto?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Jeremy Thomas</a> on <a href="https://unsplash.com/photos/the-stars-and-galaxy-as-seen-from-rocky-mountain-national-park-4dpAqfTbvKA?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
 :::
+
 
 ## {.larger}
 
@@ -892,9 +994,9 @@ Photo by <a href="https://unsplash.com/@jeremythomasphoto?utm_content=creditCopy
 
 ## Cheers to variable labels 🥂 
 
-Thank you to the **many** individuals who have helped me work with variable 
-labels, and provided feedback on both the abstract 
-submission and the development of this talk. Your support was invaluable.
+<br>
+
+Thank you to the **many** individuals who helped me develop this talk. Your support was invaluable.
 
 . . .
 
@@ -909,7 +1011,7 @@ submission and the development of this talk. Your support was invaluable.
 <br>
 Travis consented use 
 
-of his name 🤗
+of his name. 🤗
 :::
 
 ::: {.footer style="font-size:0.6em;"}

@@ -3,9 +3,7 @@ library(labelled)
 library(tidyverse)
 
 # ------------------------------------------------------------------------------
-# more manual way of labelling all versions of all data -----
-# for alternative methods of assigning variable labels in bulk, see
-# https://www.pipinghotdata.com/posts/2022-09-13-the-case-for-variable-labels-in-r/
+# manual way of labelling all versions of all data -----
 
 airlines_labelled <- airlines |>
   set_variable_labels(
@@ -119,7 +117,7 @@ flights_delay_labelled <- flights_labelled |>
     ) |> fct_relevel("Early", "On time", "Late")
   ) |>
   labelled::set_variable_labels(
-    delay_category = "Departure delay by origin airport",
+    delay_category = "Departure timing by origin airport",
     name = "Origin airport"
   )
 

@@ -1,4 +1,4 @@
-﻿df_name,df_label,var_name,var_label
+df_name,df_label,var_name,var_label
 airlines,Airline names and carrier code,carrier,Airline two letter carrier abbreviation
 airlines,Airline names and carrier code,name,Airline full name
 airports,Airport metadata,faa,Airport FAA code
@@ -57,4 +57,4 @@ flights_delay,Departure delay assessment by origin airport,dest,Flight destinati
 flights_delay,Departure delay assessment by origin airport,arr_delay,Flight arrival delay (minutes)
 flights_delay,Departure delay assessment by origin airport,dep_delay,Flight departure delay (minutes)
 flights_delay,Departure delay assessment by origin airport,name,Origin airport
-flights_delay,Departure delay assessment by origin airport,delay_category,Departure delay by origin airport
+flights_delay,Departure delay assessment by origin airport,delay_category,Departure timing by origin airport
