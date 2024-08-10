@@ -709,18 +709,32 @@ flights_delay_labelled |>
 
 # In practice {.inverse}
 
-## Source data I work with 
 
-![](images/data-1.svg)
+## {background-image="images/db-nycflights.svg" background-size=100% background-repeat=no-repeat} 
 
-## Source data I work with {visibility="uncounted"}
+::: {.absolute bottom=0 right=0  style="font-size:1.3em; padding: 1.0em 1.0em; background-color: #7090A5; color: rgb(255,255,255); font-weight: bold; text-align: center;"}
+nycflights has
 
-![](images/data-2.svg)
+5 data frames &
+
+53 variables
+:::
+
+## {background-image="images/db-trial.svg" background-size=100% background-repeat=no-repeat} 
 
 
-## Source data I work with  {visibility="uncounted"}
+::: {.absolute bottom=0 right=0  style="font-size:1.3em; padding: 1.0em 1.0em; background-color: #7090A5; color: rgb(255,255,255); font-weight: bold; text-align: center;"}
+a trial has
 
-![](images/data-3.svg)
+90 data frames &
+
+1400 variables
+:::
+
+
+
+
+
 
 
 ## {background-image="images/chuttersnap-UmncJq4KPcA-unsplash.jpg" background-size=100% background-repeat=no-repeat} 
