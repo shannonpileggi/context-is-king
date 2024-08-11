@@ -1,5 +1,57 @@
 df_name,df_label,var_name,var_label
-
+airlines,Airline names and carrier code,carrier,Airline two letter carrier abbreviation
+airlines,Airline names and carrier code,name,Airline full name
+airports,Airport metadata,faa,Airport FAA code
+airports,Airport metadata,name,Airport name
+airports,Airport metadata,lat,Airport latitude
+airports,Airport metadata,lon,Airport longitude
+airports,Airport metadata,alt,Airport altitude (feet)
+airports,Airport metadata,tz,Airport timezone offset from GMT
+airports,Airport metadata,dst,Airport daylight savings time zone
+airports,Airport metadata,tzone,Airport IANA time zone
+flights,Flights that departed NYC in 2013.,year,Flight year of departure
+flights,Flights that departed NYC in 2013.,month,Flight month of departure
+flights,Flights that departed NYC in 2013.,day,Flight day of departure
+flights,Flights that departed NYC in 2013.,dep_time,Flight departure time (local tz)
+flights,Flights that departed NYC in 2013.,sched_dep_time,Flight scheduled departure time (local tz)
+flights,Flights that departed NYC in 2013.,dep_delay,Flight departure delay (minutes)
+flights,Flights that departed NYC in 2013.,arr_time,Flight arrival time (local tz)
+flights,Flights that departed NYC in 2013.,sched_arr_time,Flight scheduled arrival time (local tz)
+flights,Flights that departed NYC in 2013.,arr_delay,Flight arrival delay (minutes)
+flights,Flights that departed NYC in 2013.,carrier,Airline two letter carrier abbreviation
+flights,Flights that departed NYC in 2013.,flight,Flight number
+flights,Flights that departed NYC in 2013.,tailnum,Plane tail number
+flights,Flights that departed NYC in 2013.,origin,Flight origin airport
+flights,Flights that departed NYC in 2013.,dest,Flight destination airport
+flights,Flights that departed NYC in 2013.,air_time,Flight time spent in air (minutes)
+flights,Flights that departed NYC in 2013.,distance,Flight distance betwen airports (miles)
+flights,Flights that departed NYC in 2013.,hour,Flight hour of scheduled departure
+flights,Flights that departed NYC in 2013.,minute,Flight minute of scheduled departure
+flights,Flights that departed NYC in 2013.,time_hour,Flight scheduled departure date/time
+planes,Plane tailnumbers found in the FAA aircraft registry,tailnum,Plane tail number
+planes,Plane tailnumbers found in the FAA aircraft registry,year,Plane year manufactured
+planes,Plane tailnumbers found in the FAA aircraft registry,type,Plane type
+planes,Plane tailnumbers found in the FAA aircraft registry,manufacturer,Plane manufacturer
+planes,Plane tailnumbers found in the FAA aircraft registry,model,Plane model
+planes,Plane tailnumbers found in the FAA aircraft registry,engines,Plane number of engines
+planes,Plane tailnumbers found in the FAA aircraft registry,seats,Plane number of seats
+planes,Plane tailnumbers found in the FAA aircraft registry,speed,Plane average cruising speed (mph)
+planes,Plane tailnumbers found in the FAA aircraft registry,engine,Plane engine type
+weather,"Hourly meterological data for LGA, JFK and EWR",origin,Weather station
+weather,"Hourly meterological data for LGA, JFK and EWR",year,Weather year of recording
+weather,"Hourly meterological data for LGA, JFK and EWR",month,Weather month of recording
+weather,"Hourly meterological data for LGA, JFK and EWR",day,Weather day of recording
+weather,"Hourly meterological data for LGA, JFK and EWR",hour,Weather hour of recording
+weather,"Hourly meterological data for LGA, JFK and EWR",temp,Weather temperature (F)
+weather,"Hourly meterological data for LGA, JFK and EWR",dewp,Weather dewpoint
+weather,"Hourly meterological data for LGA, JFK and EWR",humid,Weather relative humidity
+weather,"Hourly meterological data for LGA, JFK and EWR",wind_dir,Weather wind direction (degrees)
+weather,"Hourly meterological data for LGA, JFK and EWR",wind_speed,Weather wind speed (mph)
+weather,"Hourly meterological data for LGA, JFK and EWR",wind_gust,Weather wind gust speed (mpgh)
+weather,"Hourly meterological data for LGA, JFK and EWR",precip,Weather precipitation (inches)
+weather,"Hourly meterological data for LGA, JFK and EWR",pressure,Weather sea level pressure (millibars)
+weather,"Hourly meterological data for LGA, JFK and EWR",visib,Weather visibility (miles)
+weather,"Hourly meterological data for LGA, JFK and EWR",time_hour,Weather date/time
 flights_delay,Departure delay assessment by origin airport,origin,Flight origin airport
 flights_delay,Departure delay assessment by origin airport,dest,Flight destination airport
 flights_delay,Departure delay assessment by origin airport,arr_delay,Flight arrival delay (minutes)
