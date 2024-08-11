@@ -778,10 +778,14 @@ Photo by <a href="https://unsplash.com/@chuttersnap?utm_content=creditCopyText&u
 :::
 
 
-## Our strategy - downstream data
+## Our strategy - single data frame
 
 1. Maintain a csv with metadata.
-![](images/nycflights_variables_csv_with_delay_2lines.png){}
+![](images/nycflights_variables_csv_with_flightdelay.png){}
+
+## Our strategy - single data frame {visibility="uncounted"}
+
+1. Maintain a csv with metadata.
 
 2. Apply custom function for bulk label assignment.
 ```{r}
@@ -802,7 +806,7 @@ flights_delay_labelled <- flights |>
 
 1. Maintain a csv with metadata.
 
-![](images/nycflights_variables_csv.png){}
+![](images/nycflights_variables_csv_schema.png){}
 
 ## Our strategy - list of data frames {visibility="uncounted"}
 
@@ -913,7 +917,7 @@ Photo by <a href="https://unsplash.com/@jeremythomasphoto?utm_content=creditCopy
 
 :::: {.columns .whitebold}
 
-::: {.column width=33%}
+::: {.column width=33% #vcenter}
 R
 
 Python
@@ -922,7 +926,7 @@ Julia
 
 :::
 
-::: {.column width=33%}
+::: {.column width=33% #vcenter}
 RStudio
 
 VS Code
@@ -931,7 +935,7 @@ Positron
 
 :::
 
-::: {.column width=33%}
+::: {.column width=33% #vcenter}
 R data
 
 SAS
