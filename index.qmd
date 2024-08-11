@@ -32,7 +32,7 @@ source("nycflights-delay-demo.R")
 
 <br>
 
-::: {style="padding: 0.5em 0.5em; background-color: rgba(255, 255, 255, 1.0);"}
+::: {.cutive-mono-regular style="padding: 0.5em 0.5em; background-color: rgba(255, 255, 255, 1.0);"}
 
 Hi Shannon -
 
@@ -50,10 +50,7 @@ Director of Flight Operations
 
 ## {.center}
 
-
-<iframe src="https://giphy.com/embed/7NoNw4pMNTvgc" width="550" height="550" style frameBorder="0" class="giphy-embed" allowFullScreen>
-
-</iframe>
+![](images/computer-cat.gif)
 
 
 ::: footer
@@ -80,7 +77,7 @@ t1_unlabelled
 
 <br>
 
-::: {style="padding: 0.5em 0.5em; background-color: rgba(255, 255, 255, 1.0);"}
+::: {.cutive-mono-regular style="padding: 0.5em 0.5em; background-color: rgba(255, 255, 255, 1.0);"}
 
 Hi Shannon -
 
@@ -148,7 +145,18 @@ arrived early
 
 <br>
 
+
+
 :::: {.columns}
+
+<br>
+
+::: {.column}
+
+![](images/frynotsure.png)
+
+:::
+
 ::: {.column}
 ```{r}
 #| echo: false
@@ -163,9 +171,7 @@ t1_unlabelled|>
 ```
 :::
 
-::: {.column}
-<img src="https://en.meming.world/images/en/1/17/Monkey_Puppet.jpg"/>
-:::
+
 ::::
 
 ## 

@@ -2,6 +2,7 @@
 
 // fonts
 @import 'https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&display=swap';
+@import url('https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap');
 
 $font-family-sans-serif: "Atkinson Hyperlegible", sans-serif;
 $presentation-heading-color: #7090A5;
@@ -20,6 +21,14 @@ $custom-col: #E67E3A;
 .slide-background-content {
     background-color: #f3f3f3;
 }
+
+
+.cutive-mono-regular {
+  font-family: "Cutive Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+
 
 .whitebold {
   font-weight: bold;
