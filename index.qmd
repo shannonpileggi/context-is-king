@@ -418,14 +418,14 @@ Further reading
 ::::
 
 
-
-## Viewing labelled data
+## Viewing labelled data 
 
 :::: {.columns}
 
 ::: {.column width="50%"}
 `View(flights)`
 ![](images/flights_view_unlabelled.png)
+
 :::
 
 ::: {.column width="50%"}
@@ -434,6 +434,35 @@ Further reading
 :::
 
 ::::
+
+## Viewing labelled data {visibility="uncounted"}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+`View(flights)`
+![](images/flights_view_unlabelled.png)
+![](images/face-sad.png){.absolute width="20%"bottom=80 left=0}
+
+:::
+
+::: {.column width="50%"}
+`View(flights_labelled)`
+![](images/flights_view_labelled_less.png)
+![](images/face-happy.png){.absolute width="20%"bottom=80 right=20}
+
+:::
+
+
+::::
+
+
+::: footer
+
+[Artwork by Allison Horst](https://allisonhorst.com/data-science-art)
+
+:::
+
 
 ## Viewing labelled data
 `str(flights_labelled)`
@@ -779,6 +808,8 @@ Photo by <a href="https://unsplash.com/@chuttersnap?utm_content=creditCopyText&u
 
 
 ## Our strategy - single data frame
+
+. . .
 
 1. Maintain a csv with metadata.
 ![](images/nycflights_variables_csv_with_flightdelay.png){}
